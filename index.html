@@ -16,7 +16,7 @@
 			u: /[ưúứùừủửụựũữƯÚỨÙỪỦỬỤỰŨỮ]/,
 			i: /[íìỉịĩÍÌỈỊĨ]/,
 			y: /[ýỳỷỵỹÝỲỶỴỸ]/,
-			d: /đĐ/
+			d: /[đĐ]/
 		};
 		const regexes = ['a','e','o','u','i','y', 'd'];
 		const processed = [...data].map(x=>{let r='';regexes.forEach(y=>{if(regex[y].test(x)) r=y;});if (regexes.includes(r)) return r; else return x}).join('');
