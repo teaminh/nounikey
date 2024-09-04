@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	</head>
+<body style="margin:0">
+	<script>
+	function tprocess() {
+		event.preventDefault();
+		const data = document.getElementById('textinp').value;
+		const regex = {
+			a: /[âăáấắàầằảẩẳạậặãẫẵÂĂÁẤẮÀẦẰẢẨẲẠẬẶÃẪẴ]/,
+			e: /[êéếèềẻểẹệẽễÊÉẾÈỀẺỂẸỆẼỄ]/,
+			o: /[ôơóốớồờổởộợỗỡÔƠỐỚỒỜỔỞỘỢỖỠ]/,
+			u: /[ưúứùừủửụựũữƯÚỨÙỪỦỬỤỰŨỮ]/,
+			i: /[íìỉịĩÍÌỈỊĨ]/,
+			y: /[ýỳỷỵỹÝỲỶỴỸ]/,
+			d: /đ/
+		};
+		const regexes = ['a','e','o','u','i','y', 'd'];
+		const processed = [...data].map(x=>{let r='';regexes.forEach(y=>{if(regex[y].test(x)) r=y;});if (regexes.includes(r)) return r; else return x}).join('');
+		document.getElementById('outp').innerText=processed;
+	}
+	</script>
+	<div style="border-style:ridge;margin:5%;padding:5%">
+		<center><p style="margin:0;">nhap van ban vao khung</p></center>
+		<form id="inp" onsubmit="tprocess()">
+		<textarea id="textinp" style="margin:5% 0;width:100%"></textarea>
+		<br>
+		<input type="submit" value="nhap" style="width:100%">
+		</form>
+	</div>
+	<div style="border-style:ridge;margin:5%;padding:5%;"><p id="outp"></p></div>
+</body>
+</html>
