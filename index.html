@@ -10,15 +10,22 @@
 		event.preventDefault();
 		const data = document.getElementById('textinp').value;
 		const regex = {
-			a: /[âăáấắàầằảẩẳạậặãẫẵÂĂÁẤẮÀẦẰẢẨẲẠẬẶÃẪẴ]/,
-			e: /[êéếèềẻểẹệẽễÊÉẾÈỀẺỂẸỆẼỄ]/,
-			o: /[ôơóốớồờỏổởọộợỗỡÔƠỐỚỒỜỎỔỞỘỢỖỠ]/,
-			u: /[ưúứùừủửụựũữƯÚỨÙỪỦỬỤỰŨỮ]/,
-			i: /[íìỉịĩÍÌỈỊĨ]/,
-			y: /[ýỳỷỵỹÝỲỶỴỸ]/,
-			d: /[đĐ]/
+			a: /[âăáấắàầằảẩẳạậặãẫẵ]/,
+			e: /[êéếèềẻểẹệẽễ]/,
+			o: /[ôơóốớồờỏổởọộợỗỡ]/,
+			u: /[ưúứùừủửụựũữ]/,
+			i: /[íìỉịĩ]/,
+			y: /[ýỳỷỵỹ]/,
+			d: /đ/,
+			A: /[ÂĂÁẤẮÀẦẰẢẨẲẠẬẶÃẪẴ]/,
+			E: /[ÊÉẾÈỀẺỂẸỆẼỄ]/,
+			O: /[ÔƠÓỐỚÒỒỜỎỔỞỌỘÕỢỖỠ]/,
+			U: /[ƯÚỨÙỪỦỬỤỰŨỮ]/,
+			I: /[ÍÌỈỊĨ]/,
+			Y: /[ÝỲỶỴỸ]/,
+			D: /Đ/
 		};
-		const regexes = ['a','e','o','u','i','y', 'd'];
+		const regexes = Object.keys(regex);
 		const processed = [...data].map(x=>{let r='';regexes.forEach(y=>{if(regex[y].test(x)) r=y;});if (regexes.includes(r)) return r; else return x}).join('');
 		document.getElementById('outp').innerText=processed;
 	}
